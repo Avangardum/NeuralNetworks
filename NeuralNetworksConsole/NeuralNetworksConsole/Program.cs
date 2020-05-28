@@ -6,7 +6,16 @@ namespace NeuralNetworksConsole
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            while (true)
+            {
+                Console.WriteLine("Choose subroutine:");
+                Console.Write(SubroutineDictionary.SubroutineList);
+                Console.Write(">");
+                string input = Console.ReadLine();
+                Console.WriteLine();
+                SubroutineDictionary.GetSubroutine(input.ToLower()).Run();
+                Console.WriteLine();
+            }
         }
     }
 }
