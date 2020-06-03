@@ -17,7 +17,7 @@ namespace NeuralNetworksConsole
         {
             foreach (var x in _testXArray)
             {
-                Console.WriteLine($"f({x} = {function(x)})");
+                Console.WriteLine($"f({x}) = {function(x)}");
             }
         }
     }

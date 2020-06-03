@@ -7,8 +7,10 @@ namespace NeuralNetworksConsole
     abstract class Neuron
     {
         public int Id { get; }
+        public Func<double, double> ActivationFunction { get; protected set; }
+        public List<Synapse> SynapsesAhead;
 
-        protected Func<double, double> _activationFunction;
+        public double Delta;
 
         private double _input;
 
@@ -18,7 +20,7 @@ namespace NeuralNetworksConsole
             set
             {
                 _input = value;
-                Output = _activationFunction(_input);
+                Output = ActivationFunction(_input);
             }
         }
 
@@ -27,7 +29,8 @@ namespace NeuralNetworksConsole
         private Neuron(int id, Func<double, double> activationFunction)
         {
             Id = id;
-            _activationFunction = activationFunction;
+            ActivationFunction = activationFunction;
+            SynapsesAhead = new List<Synapse>();
         }
 
         protected Neuron(Func<double, double> activationFunction) : this(IdGenerator.GetId(), activationFunction)

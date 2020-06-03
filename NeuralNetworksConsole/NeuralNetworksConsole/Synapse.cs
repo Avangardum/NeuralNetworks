@@ -12,6 +12,7 @@ namespace NeuralNetworksConsole
         public Neuron NeuronBehind { get; }
         public Neuron NeuronAhead { get; }
         public double Weight { get; set; }
+        public double PreviousWeightChange { get; set; } = 0;
 
         private Synapse(int id, Neuron neuronBehind, Neuron neuronAhead, double weight)
         {
@@ -19,6 +20,8 @@ namespace NeuralNetworksConsole
             NeuronBehind = neuronBehind;
             NeuronAhead = neuronAhead;
             Weight = weight;
+
+            neuronBehind.SynapsesAhead.Add(this);
         }
         public Synapse(Neuron neuronBehind, Neuron neuronAhead, double weight) : this(IdGenerator.GetId(), neuronBehind, neuronAhead, weight)
         {
@@ -28,5 +31,7 @@ namespace NeuralNetworksConsole
         {
 
         }
+
+        public static void SetWeightRandomSeed(int seed) => _random = new Random(seed);
     }
 }

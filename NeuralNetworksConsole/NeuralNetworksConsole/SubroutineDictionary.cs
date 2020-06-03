@@ -1,7 +1,4 @@
-﻿using NeuralNetworksConsole.Subroutines;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace NeuralNetworksConsole
 {
@@ -29,6 +26,7 @@ namespace NeuralNetworksConsole
             _doNotingSubroutine = new DoNothingSubroutine();
             _dictionary = new Dictionary<string, ISubroutine>();
             _dictionary.Add("activation_test", new ActivationTestSubroutine());
+            _dictionary.Add("test", new TestSubroutine());
             _dictionary.Add("xor", new XORSubroutine());
         }
 
